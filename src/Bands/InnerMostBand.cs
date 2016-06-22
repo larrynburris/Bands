@@ -5,13 +5,13 @@ namespace Bands
     /// <summary>
     /// A band used to provide an interface to the wrapped functionality.
     /// </summary>
-    /// <typeparam name="T">Type of errand</typeparam>
-    public class InnerMostBand<T> : IBand<T> where T : IErrand
+    /// <typeparam name="T">Type of payload</typeparam>
+    public class InnerMostBand<T> : IBand<T> where T : IPayload
     {
         /// <summary>
-        /// A method accepting the errand <paramref name="T"/> that represents the inner wrapped functionality.
+        /// A method accepting the payload <paramref name="T"/> that represents the inner wrapped functionality.
         /// </summary>
-        private Action<T> errandRunner;
+        private Action<T> payloadHandler;
 
 
         /// <summary>
@@ -20,16 +20,16 @@ namespace Bands
         /// <param name="action"></param>
         public InnerMostBand(Action<T> action)
         {
-            errandRunner = action;
+            payloadHandler = action;
         }
 
         /// <summary>
         /// Run the wrapped functionality.
         /// </summary>
-        /// <param name="errand"></param>
-        public void Run(T errand)
+        /// <param name="payload">A payload</param>
+        public void Run(T payload)
         {
-            errandRunner(errand);
+            payloadHandler(payload);
         }
     }
 }

@@ -8,27 +8,27 @@ namespace Bands.Time
     /// required to complete execution of inner functionality. In addition, this band will extract
     /// the average execution time per item in the collection.
     /// </summary>
-    /// <typeparam name="TTimedCollectionErrand">Type of timed collection errand</typeparam>
-    public class TimedCollectionBand<TTimedCollectionErrand> : Band<TTimedCollectionErrand> 
-        where TTimedCollectionErrand : ITimedCollectionErrand
+    /// <typeparam name="TTimedCollectionPayload">Type of timed collection payload</typeparam>
+    public class TimedCollectionBand<TTimedCollectionPayload> : Band<TTimedCollectionPayload> 
+        where TTimedCollectionPayload : ITimedCollectionPayload
     {
-        public TimedCollectionBand(IBand<TTimedCollectionErrand> errand) : base(errand) { }
+        public TimedCollectionBand(IBand<TTimedCollectionPayload> payload) : base(payload) { }
 
-        public TimedCollectionBand(Action<TTimedCollectionErrand> errandRunner) : base(errandRunner) { }
+        public TimedCollectionBand(Action<TTimedCollectionPayload> payloadHandler) : base(payloadHandler) { }
 
         /// <summary>
         /// Determine timespan required to execute inner bands and/or wrapped functionality and determine average
         /// time per collection item.
         /// </summary>
-        /// <param name="errand">Type of timed collection errand</param>
-        public new void Run(TTimedCollectionErrand errand)
+        /// <param name="payload">A timed collection payload</param>
+        public new void Run(TTimedCollectionPayload payload)
         {
             var sw = new Stopwatch();
             sw.Start();
-            InnerBand.Run(errand);
+            InnerBand.Run(payload);
             sw.Stop();
-            errand.TimeToCompleteEntireCollectionErrand = sw.Elapsed;
-            errand.AverageTimeToCompleteEachCollectionItem = new TimeSpan(0, 0, 0, 0, (int)(sw.ElapsedMilliseconds / errand.CollectionCount));
+            payload.TimeToCompleteEntireCollectionPayload = sw.Elapsed;
+            payload.AverageTimeToCompleteEachCollectionItem = new TimeSpan(0, 0, 0, 0, (int)(sw.ElapsedMilliseconds / payload.CollectionCount));
         }
     }
 }

@@ -7,24 +7,24 @@ namespace Bands.Time
     /// Helper class for wrapper some inner functionality with a stopwatch and extracting timespan 
     /// required to complete execution of inner functionality.
     /// </summary>
-    /// <typeparam name="TErrand">Type of timed errand</typeparam>
-    public class TimedBand<TErrand> : Band<TErrand> where TErrand : ITimedErrand
+    /// <typeparam name="TPayload">Type of timed payload</typeparam>
+    public class TimedBand<TPayload> : Band<TPayload> where TPayload : ITimedPayload
     {
-        public TimedBand(IBand<TErrand> errand) : base(errand) { }
+        public TimedBand(IBand<TPayload> payload) : base(payload) { }
 
-        public TimedBand(Action<TErrand> errandRunner) : base(errandRunner) { }
+        public TimedBand(Action<TPayload> payloadHandler) : base(payloadHandler) { }
 
         /// <summary>
         /// Determine timespan required to execute inner bands and/or wrapped functionality.
         /// </summary>
-        /// <param name="errand">Type of timed errand</param>
-        public new void Run(TErrand errand)
+        /// <param name="payload">Type of timed payload</param>
+        public new void Run(TPayload payload)
         {
             var sw = new Stopwatch();
             sw.Start();
-            InnerBand.Run(errand);
+            InnerBand.Run(payload);
             sw.Stop();
-            errand.TimeToCompleteErrand = sw.Elapsed;
+            payload.TimeToCompletePayload = sw.Elapsed;
         }
     }
 }

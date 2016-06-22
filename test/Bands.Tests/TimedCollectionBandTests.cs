@@ -10,7 +10,7 @@ namespace Bands.Tests
     [TestFixture]
     public class TimedCollectionBandTests
     {
-        public class TimedCollectionErrand : ITimedCollectionErrand
+        public class TimedCollectionPayload : ITimedCollectionPayload
         {
             public IEnumerable<string> Names { get; set; }
 
@@ -18,18 +18,18 @@ namespace Bands.Tests
 
             public int CollectionCount { get { return Names.Count(); } }
 
-            public TimeSpan TimeToCompleteEntireCollectionErrand { get; set; }
+            public TimeSpan TimeToCompleteEntireCollectionPayload { get; set; }
             
         }
 
-        TimedCollectionErrand CollectionErrand;
+        TimedCollectionPayload CollectionPayload;
         const int METHOD_ONE_SLEEP_TIME = 100;
         const int METHOD_TWO_SLEEP_TIME = 200;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            CollectionErrand = new TimedCollectionErrand { Names = new List<string> { "John", "Jack", "James" } };
+            CollectionPayload = new TimedCollectionPayload { Names = new List<string> { "John", "Jack", "James" } };
         }
 
 
@@ -37,71 +37,71 @@ namespace Bands.Tests
         public void TestTimedCollectionBandUsingTestMethod1_TimeToCompleteEntireCollectionShouldBeInRangeOfSleepRangeTimesCollectionCountCount()
         {
             
-            var timedErrandBand = new TimedCollectionBand<TimedCollectionErrand>(TestMethod1);
-            timedErrandBand.Run(CollectionErrand);
-            var minTime = CollectionErrand.CollectionCount * METHOD_ONE_SLEEP_TIME;
-            var maxTime = minTime + CollectionErrand.CollectionCount * 10;
-            Assert.IsTrue(CollectionErrand.TimeToCompleteEntireCollectionErrand.TotalMilliseconds >=  minTime
-                       && CollectionErrand.TimeToCompleteEntireCollectionErrand.TotalMilliseconds <= maxTime);
+            var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod1);
+            timedPayloadBand.Run(CollectionPayload);
+            var minTime = CollectionPayload.CollectionCount * METHOD_ONE_SLEEP_TIME;
+            var maxTime = minTime + CollectionPayload.CollectionCount * 10;
+            Assert.IsTrue(CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds >=  minTime
+                       && CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds <= maxTime);
         }
 
         [Test]
         public void TestTimedCollectionBandUsingTestMethod1_AverageTimeToCompleteShouldBeInRangeOfSleepRangeTimesCollectionCountCount()
         {
 
-            var timedErrandBand = new TimedCollectionBand<TimedCollectionErrand>(TestMethod1);
-            timedErrandBand.Run(CollectionErrand);
-            Assert.IsTrue(CollectionErrand.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_ONE_SLEEP_TIME
-                       && CollectionErrand.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_ONE_SLEEP_TIME+10));
+            var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod1);
+            timedPayloadBand.Run(CollectionPayload);
+            Assert.IsTrue(CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_ONE_SLEEP_TIME
+                       && CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_ONE_SLEEP_TIME+10));
         }
 
         [Test]
         public void TestTimedCollectionBandUsingTestMethod2_TimeToCompleteEntireCollectionShouldBeInRangeOfSleepRangeTimesCollectionCountCount()
         {
 
-            var timedErrandBand = new TimedCollectionBand<TimedCollectionErrand>(TestMethod2);
-            timedErrandBand.Run(CollectionErrand);
-            var minTime = CollectionErrand.CollectionCount * METHOD_TWO_SLEEP_TIME;
-            var maxTime = minTime + CollectionErrand.CollectionCount * 10;
-            Assert.IsTrue(CollectionErrand.TimeToCompleteEntireCollectionErrand.TotalMilliseconds >= minTime
-                       && CollectionErrand.TimeToCompleteEntireCollectionErrand.TotalMilliseconds <= maxTime);
+            var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod2);
+            timedPayloadBand.Run(CollectionPayload);
+            var minTime = CollectionPayload.CollectionCount * METHOD_TWO_SLEEP_TIME;
+            var maxTime = minTime + CollectionPayload.CollectionCount * 10;
+            Assert.IsTrue(CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds >= minTime
+                       && CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds <= maxTime);
         }
 
         [Test]
         public void TestTimedCollectionBandUsingTestMethod2_AverageTimeToCompleteShouldBeInRangeOfSleepRangeTimesCollectionCountCount()
         {
 
-            var timedErrandBand = new TimedCollectionBand<TimedCollectionErrand>(TestMethod2);
-            timedErrandBand.Run(CollectionErrand);
-            Assert.IsTrue(CollectionErrand.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_TWO_SLEEP_TIME
-                       && CollectionErrand.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_TWO_SLEEP_TIME + 20));
+            var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod2);
+            timedPayloadBand.Run(CollectionPayload);
+            Assert.IsTrue(CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_TWO_SLEEP_TIME
+                       && CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_TWO_SLEEP_TIME + 20));
         }
 
         [Test]
-        public void TestTimedBandUsingNullErrandRunner_ShouldThrowArgumentException()
+        public void TestTimedBandUsingNullPayloadHandler_ShouldThrowArgumentException()
         {
-            Action<TimedCollectionErrand> errandRunner = null;
-            Assert.Throws(typeof(ArgumentException), (() => new TimedCollectionBand<TimedCollectionErrand>(errandRunner)));
+            Action<TimedCollectionPayload> payloadHandler = null;
+            Assert.Throws(typeof(ArgumentException), (() => new TimedCollectionBand<TimedCollectionPayload>(payloadHandler)));
         }
 
         [Test]
         public void TestTimedBandUsingNullInnerBand_ShouldThrowArgumentException()
         {
-            Band<TimedCollectionErrand> innerBand = null;
-            Assert.Throws(typeof(ArgumentException), (() => new TimedCollectionBand<TimedCollectionErrand>(innerBand)));
+            Band<TimedCollectionPayload> innerBand = null;
+            Assert.Throws(typeof(ArgumentException), (() => new TimedCollectionBand<TimedCollectionPayload>(innerBand)));
         }
 
-        public void TestMethod1(TimedCollectionErrand errand)
+        public void TestMethod1(TimedCollectionPayload payload)
         {
-            foreach(var name in errand.Names)
+            foreach(var name in payload.Names)
             {
                 Thread.Sleep(METHOD_ONE_SLEEP_TIME);
             }
         }
 
-        public void TestMethod2(TimedCollectionErrand errand)
+        public void TestMethod2(TimedCollectionPayload payload)
         {
-            foreach (var name in errand.Names)
+            foreach (var name in payload.Names)
             {
                 Thread.Sleep(METHOD_TWO_SLEEP_TIME);
             }
