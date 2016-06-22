@@ -6,7 +6,7 @@ namespace Bands
     /// Helper class for wrapping a band of functionality around some inner functionality.
     /// </summary>
     /// <typeparam name="T">The type of errand</typeparam>
-    public class Band<T> : IBand<T> where T : IErrand
+    public abstract class Band<T> : IBand<T> where T : IErrand
     {
         protected IBand<T> InnerBand;
 
@@ -36,6 +36,10 @@ namespace Bands
             InnerBand = new InnerMostBand<T>(errandRunner);
         }
         
+        /// <summary>
+        /// Run the next inner band
+        /// </summary>
+        /// <param name="errand"></param>
         public void Run(T errand)
         {
             if (InnerBand == null)

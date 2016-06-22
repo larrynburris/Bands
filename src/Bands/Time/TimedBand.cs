@@ -4,7 +4,8 @@ using System.Diagnostics;
 namespace Bands.Time
 {
     /// <summary>
-    /// Helper class for wrapper some inner functionality with a stopwatch and extracting timespan required to complete execution of inner functionality.
+    /// Helper class for wrapper some inner functionality with a stopwatch and extracting timespan 
+    /// required to complete execution of inner functionality.
     /// </summary>
     /// <typeparam name="TErrand">Type of timed errand</typeparam>
     public class TimedBand<TErrand> : Band<TErrand> where TErrand : ITimedErrand
@@ -13,6 +14,10 @@ namespace Bands.Time
 
         public TimedBand(Action<TErrand> errandRunner) : base(errandRunner) { }
 
+        /// <summary>
+        /// Determine timespan required to execute inner bands and/or wrapped functionality.
+        /// </summary>
+        /// <param name="errand">Type of timed errand</param>
         public new void Run(TErrand errand)
         {
             var sw = new Stopwatch();
