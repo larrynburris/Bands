@@ -11,7 +11,7 @@ namespace Bands.Validation
         public TValidatable ValidatablePayload { get; set; }
 
         public ValidationException(TValidatable validatable) :
-            base($"Failed validation on {typeof(TValidatable)}: \n{validatable.ToString()}")
+            base(string.Format("Failed validation on {0}: \n{1}", typeof(TValidatable), validatable.ToString()))
         {
             ValidatablePayload = validatable;
         }

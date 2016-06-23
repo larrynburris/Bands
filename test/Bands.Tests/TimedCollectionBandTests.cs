@@ -26,8 +26,8 @@ namespace Bands.Tests
         const int METHOD_ONE_SLEEP_TIME = 100;
         const int METHOD_TWO_SLEEP_TIME = 200;
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
             CollectionPayload = new TimedCollectionPayload { Names = new List<string> { "John", "Jack", "James" } };
         }

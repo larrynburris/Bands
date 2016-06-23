@@ -13,7 +13,7 @@ namespace Bands.Tests
 
             public override string ToString()
             {
-                return $"Payload type: {this.GetType()}]n Counter: {Counter}";
+                return string.Format("Payload type: {0}\n Counter: {1}", this.GetType(), Counter);
             }
         }
 
@@ -28,8 +28,8 @@ namespace Bands.Tests
         PayloadValidator Validator;
         ValidatablePayload Payload;
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
+        [TestFixtureSetUp]
+        public void TestFixture()
         {
             Validator = new PayloadValidator();
         }
