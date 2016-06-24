@@ -9,7 +9,7 @@ namespace Bands
     public abstract class Band<T> : IBand<T> where T : IPayload
     {
         protected IBand<T> InnerBand;
-
+        
         /// <summary>
         /// Initialize band around another band.
         /// </summary>
@@ -35,17 +35,23 @@ namespace Bands
 
             InnerBand = new InnerMostBand<T>(payloadHandler);
         }
-        
+
+        public abstract void OnEnter(T payload);
+
+        public abstract void OnExit(T payload);
+
         /// <summary>
         /// Run the next inner band and/or the wrapped functionality
         /// </summary>
         /// <param name="payload">A playload</param>
-        public virtual void Run(T payload)
+        public void Enter(T payload)
         {
             if (InnerBand == null)
                 throw new ApplicationException("Band has no inner band.");
 
-            InnerBand.Run(payload);
+            OnEnter(payload);
+            InnerBand.Enter(payload);
+            OnExit(payload);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Bands.Tests
         {
             Payload = new ValidatablePayload { Counter = 0 };
             var band = new ValidationBand<ValidatablePayload>(IncrementCounter, Validator);
-            Assert.DoesNotThrow(() => band.Run(Payload));
+            Assert.DoesNotThrow(() => band.Enter(Payload));
             Assert.IsTrue(Payload.Counter == 1); //Increment counter ran because validation passed
         }
 
@@ -47,7 +47,7 @@ namespace Bands.Tests
         {
             Payload = new ValidatablePayload { Counter = 1 };
             var band = new ValidationBand<ValidatablePayload>(IncrementCounter, Validator);
-            Assert.Throws<ValidationException<ValidatablePayload>>(() => band.Run(Payload));
+            Assert.Throws<ValidationException<ValidatablePayload>>(() => band.Enter(Payload));
             Assert.IsTrue(Payload.Counter == 1); //Increment counter not ran because validation failed
         }
 

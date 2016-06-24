@@ -28,12 +28,14 @@ namespace Bands.Validation
         /// </summary>
         /// <param name="payload">A validatable payload</param>
         /// <exception cref="ValidationException{TValidatable}">Thrown if validation fails</exception>
-        public override void Run(TPayload payload)
+        public override void OnEnter(TPayload payload)
         {
             if (!_validator.Validate(payload))
                 throw new ValidationException<TPayload>(payload);
+        }
 
-            InnerBand.Run(payload);
+        public override void OnExit(TPayload payload)
+        {
         }
     }
 }

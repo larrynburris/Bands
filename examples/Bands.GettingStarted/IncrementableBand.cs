@@ -8,13 +8,14 @@ namespace Bands.GettingStarted
 
         public IncrementableBand(IBand<TPayload> innerBand) : base(innerBand) { }
 
-        public override void Run(TPayload payload)
+        public override void OnEnter(TPayload payload)
         {
             Console.WriteLine("Calling payload.Increment()");
             payload.Increment();
+        }
 
-            InnerBand.Run(payload);
-
+        public override void OnExit(TPayload payload)
+        {
             Console.WriteLine("Calling payload.Decrement()");
             payload.Decrement();
         }

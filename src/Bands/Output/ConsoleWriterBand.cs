@@ -14,14 +14,22 @@ namespace Bands.Output
         public ConsoleWriterBand(IBand<TPayload> innerBand) : base(innerBand) { }
 
         /// <summary>
-        /// Output <paramref name="payload"/>.ToString() method prior to and after executing 
-        /// inner bands and/or wrapped functionality
+        /// Print <paramref name="payload"/>.ToString() to console prior to executing inner bands
+        /// and/or wrapped functionality
         /// </summary>
-        /// <param name="payload">An IWritable.ToString()</param>
-        public override void Run(TPayload payload)
+        /// <param name="payload">A WritablePayload</param>
+        public override void OnEnter(TPayload payload)
         {
             Console.WriteLine(payload.ToString());
-            InnerBand.Run(payload);
+        }
+
+        /// <summary>
+        /// Print <paramref name="payload"/>.ToString() to console after executing inner bands
+        /// and/or wrapped functionality
+        /// </summary>
+        /// <param name="payload"></param>
+        public override void OnExit(TPayload payload)
+        {
             Console.WriteLine(payload.ToString());
         }
     }

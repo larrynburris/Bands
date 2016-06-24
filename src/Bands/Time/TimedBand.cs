@@ -10,21 +10,22 @@ namespace Bands.Time
     /// <typeparam name="TPayload">Type of timed payload</typeparam>
     public class TimedBand<TPayload> : Band<TPayload> where TPayload : ITimedPayload
     {
+        Stopwatch _stopwatch;
+
         public TimedBand(IBand<TPayload> payload) : base(payload) { }
 
         public TimedBand(Action<TPayload> payloadHandler) : base(payloadHandler) { }
 
-        /// <summary>
-        /// Determine timespan required to execute inner bands and/or wrapped functionality.
-        /// </summary>
-        /// <param name="payload">Type of timed payload</param>
-        public override void Run(TPayload payload)
+        public override void OnEnter(TPayload payload)
         {
-            var sw = new Stopwatch();
-            sw.Start();
-            InnerBand.Run(payload);
-            sw.Stop();
-            payload.TimeToCompletePayload = sw.Elapsed;
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+        }
+
+        public override void OnExit(TPayload payload)
+        {
+            _stopwatch.Stop();
+            payload.TimeToCompletePayload = _stopwatch.Elapsed;
         }
     }
 }

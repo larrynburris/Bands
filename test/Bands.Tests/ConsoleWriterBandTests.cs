@@ -53,7 +53,7 @@ namespace Bands.Tests
         {
             Payload = new NewWritablePayload();
             var band = new ConsoleWriterBand<NewWritablePayload>(PayloadHandler);
-            band.Run(Payload);
+            band.Enter(Payload);
             var streamString = GetStreamAsString();
             var consoleWriteCount = streamString.Count(l => l == '0');
             Assert.IsTrue(Payload.ExecutedPayloadHandler = true);
@@ -67,7 +67,7 @@ namespace Bands.Tests
             
             var innerConsoleBand = new ConsoleWriterBand<NewWritablePayload>(PayloadHandler);
             var outerConsoleBand = new ConsoleWriterBand<NewWritablePayload>(innerConsoleBand);
-            outerConsoleBand.Run(Payload);
+            outerConsoleBand.Enter(Payload);
             var streamString = GetStreamAsString();
             var consoleWriteCount = streamString.Count(l => l == '0');
             Assert.IsTrue(Payload.ExecutedPayloadHandler = true);

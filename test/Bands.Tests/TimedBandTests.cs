@@ -18,7 +18,7 @@ namespace Bands.Tests
         {
             var timedPayload = new TimedPayload();
             var timedPayloadBand = new TimedBand<TimedPayload>(TestMethod1);
-            timedPayloadBand.Run(timedPayload);
+            timedPayloadBand.Enter(timedPayload);
             Assert.IsTrue(timedPayload.TimeToCompletePayload.TotalMilliseconds > 100 && timedPayload.TimeToCompletePayload.TotalMilliseconds < 110);
         }
 
@@ -27,7 +27,7 @@ namespace Bands.Tests
         {
             var timedPayload = new TimedPayload();
             var timedPayloadBand = new TimedBand<TimedPayload>(TestMethod2);
-            timedPayloadBand.Run(timedPayload);
+            timedPayloadBand.Enter(timedPayload);
             Assert.IsTrue(timedPayload.TimeToCompletePayload.TotalMilliseconds > 200 && timedPayload.TimeToCompletePayload.TotalMilliseconds < 210);
         }
 

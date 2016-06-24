@@ -38,7 +38,7 @@ namespace Bands.Tests
         {
             
             var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod1);
-            timedPayloadBand.Run(CollectionPayload);
+            timedPayloadBand.Enter(CollectionPayload);
             var minTime = CollectionPayload.CollectionCount * METHOD_ONE_SLEEP_TIME;
             var maxTime = minTime + CollectionPayload.CollectionCount * 10;
             Assert.IsTrue(CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds >=  minTime
@@ -50,7 +50,7 @@ namespace Bands.Tests
         {
 
             var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod1);
-            timedPayloadBand.Run(CollectionPayload);
+            timedPayloadBand.Enter(CollectionPayload);
             Assert.IsTrue(CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_ONE_SLEEP_TIME
                        && CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_ONE_SLEEP_TIME+10));
         }
@@ -60,7 +60,7 @@ namespace Bands.Tests
         {
 
             var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod2);
-            timedPayloadBand.Run(CollectionPayload);
+            timedPayloadBand.Enter(CollectionPayload);
             var minTime = CollectionPayload.CollectionCount * METHOD_TWO_SLEEP_TIME;
             var maxTime = minTime + CollectionPayload.CollectionCount * 10;
             Assert.IsTrue(CollectionPayload.TimeToCompleteEntireCollectionPayload.TotalMilliseconds >= minTime
@@ -72,7 +72,7 @@ namespace Bands.Tests
         {
 
             var timedPayloadBand = new TimedCollectionBand<TimedCollectionPayload>(TestMethod2);
-            timedPayloadBand.Run(CollectionPayload);
+            timedPayloadBand.Enter(CollectionPayload);
             Assert.IsTrue(CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds >= METHOD_TWO_SLEEP_TIME
                        && CollectionPayload.AverageTimeToCompleteEachCollectionItem.TotalMilliseconds <= (METHOD_TWO_SLEEP_TIME + 20));
         }

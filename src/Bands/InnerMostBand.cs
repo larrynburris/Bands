@@ -27,7 +27,7 @@ namespace Bands
         /// Run the wrapped functionality.
         /// </summary>
         /// <param name="payload">A payload</param>
-        public void Run(T payload)
+        public void Enter(T payload)
         {
             payloadHandler(payload);
         }

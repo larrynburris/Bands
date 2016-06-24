@@ -6,6 +6,6 @@
     /// <typeparam name="T">The type of payload</typeparam>
     public interface IBand<T> where T : IPayload
     {
-        void Run(T payload);
+        void Enter(T payload);
     }
 }
