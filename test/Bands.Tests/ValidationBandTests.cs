@@ -1,5 +1,4 @@
-﻿using System;
-using Bands.Validation;
+﻿using Bands.Validation;
 using NUnit.Framework;
 
 namespace Bands.Tests

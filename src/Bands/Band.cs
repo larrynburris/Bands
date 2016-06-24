@@ -18,7 +18,7 @@ namespace Bands
         public Band(IBand<T> innerBand)
         {
             if (innerBand == null)
-                throw new ArgumentException("Supplied parameter innerBand cannot be bull.");
+                throw new ArgumentException("Supplied parameter innerBand cannot be null.");
 
             InnerBand = innerBand;
         }
@@ -40,7 +40,7 @@ namespace Bands
         /// Run the next inner band and/or the wrapped functionality
         /// </summary>
         /// <param name="payload">A playload</param>
-        public void Run(T payload)
+        public virtual void Run(T payload)
         {
             if (InnerBand == null)
                 throw new ApplicationException("Band has no inner band.");

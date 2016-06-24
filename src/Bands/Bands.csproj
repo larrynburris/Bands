@@ -45,6 +45,9 @@
     <Compile Include="IBand.cs" />
     <Compile Include="IPayload.cs" />
     <Compile Include="InnerMostBand.cs" />
+    <Compile Include="Output\ConsoleWriterBand.cs" />
+    <Compile Include="Output\IWritable.cs" />
+    <Compile Include="Output\WritablePayload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Time\ITimedCollectionPayload.cs" />
     <Compile Include="Time\ITimedPayload.cs" />

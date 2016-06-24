@@ -21,7 +21,7 @@ namespace Bands.Time
         /// time per collection item.
         /// </summary>
         /// <param name="payload">A timed collection payload</param>
-        public new void Run(TTimedCollectionPayload payload)
+        public override void Run(TTimedCollectionPayload payload)
         {
             var sw = new Stopwatch();
             sw.Start();

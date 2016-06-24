@@ -18,7 +18,7 @@ namespace Bands.Time
         /// Determine timespan required to execute inner bands and/or wrapped functionality.
         /// </summary>
         /// <param name="payload">Type of timed payload</param>
-        public new void Run(TPayload payload)
+        public override void Run(TPayload payload)
         {
             var sw = new Stopwatch();
             sw.Start();
