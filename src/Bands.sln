@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bands", "Bands\Bands.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bands.Tests", "..\test\Bands.Tests\Bands.Tests.csproj", "{57ADD7C7-E676-4B3B-B921-A924DBFCDA64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bands.GettingStarted", "..\examples\Bands.GettingStarted\Bands.GettingStarted.csproj", "{065A53DF-95EE-42F0-B2BE-E744D8180AA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{77AAEC20-2F4D-4D19-8C1A-D15E1D8B9201}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8620CE33-4609-4335-8E9F-E149164CB2D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{C0E56110-7214-4DD0-8093-9F127C57E33E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,17 @@ Global
 		{57ADD7C7-E676-4B3B-B921-A924DBFCDA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57ADD7C7-E676-4B3B-B921-A924DBFCDA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57ADD7C7-E676-4B3B-B921-A924DBFCDA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065A53DF-95EE-42F0-B2BE-E744D8180AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065A53DF-95EE-42F0-B2BE-E744D8180AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065A53DF-95EE-42F0-B2BE-E744D8180AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065A53DF-95EE-42F0-B2BE-E744D8180AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{065B845A-B26D-4DE9-8718-39A92E247486} = {77AAEC20-2F4D-4D19-8C1A-D15E1D8B9201}
+		{57ADD7C7-E676-4B3B-B921-A924DBFCDA64} = {8620CE33-4609-4335-8E9F-E149164CB2D4}
+		{065A53DF-95EE-42F0-B2BE-E744D8180AA5} = {C0E56110-7214-4DD0-8093-9F127C57E33E}
 	EndGlobalSection
 EndGlobal
