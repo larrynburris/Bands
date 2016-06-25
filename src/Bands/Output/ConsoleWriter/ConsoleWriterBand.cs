@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bands.Output
+namespace Bands.Output.ConsoleWriter
 {
     /// <summary>
     /// Helper class for wrapping some inner functionality with a console writer. The IWritable.ToString()
@@ -20,7 +20,7 @@ namespace Bands.Output
         /// <param name="payload">A WritablePayload</param>
         public override void OnEnter(TPayload payload)
         {
-            Console.WriteLine(payload.ToString());
+            System.Console.WriteLine(payload.ToString());
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Bands.Output
         /// <param name="payload"></param>
         public override void OnExit(TPayload payload)
         {
-            Console.WriteLine(payload.ToString());
+            System.Console.WriteLine(payload.ToString());
         }
     }
 }

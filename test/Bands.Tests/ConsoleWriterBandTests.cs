@@ -1,9 +1,9 @@
 ﻿using System;
 using Bands.Output;
-using Moq;
 using NUnit.Framework;
 using System.IO;
 using System.Linq;
+using Bands.Output.ConsoleWriter;
 
 namespace Bands.Tests
 {

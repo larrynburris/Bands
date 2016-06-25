@@ -1,4 +1,5 @@
 ﻿using Bands.Output;
+using Bands.Output.ConsoleWriter;
 using System;
 
 namespace Bands.GettingStarted
