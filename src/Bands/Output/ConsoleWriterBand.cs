@@ -15,7 +15,7 @@ namespace Bands.Output
 
         /// <summary>
         /// Print <paramref name="payload"/>.ToString() to console prior to executing inner bands
-        /// and/or wrapped functionality
+        /// and/or wrapped functionality.
         /// </summary>
         /// <param name="payload">A WritablePayload</param>
         public override void OnEnter(TPayload payload)
@@ -25,7 +25,7 @@ namespace Bands.Output
 
         /// <summary>
         /// Print <paramref name="payload"/>.ToString() to console after executing inner bands
-        /// and/or wrapped functionality
+        /// and/or wrapped functionality.
         /// </summary>
         /// <param name="payload"></param>
         public override void OnExit(TPayload payload)

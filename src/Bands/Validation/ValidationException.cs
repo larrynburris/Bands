@@ -3,9 +3,9 @@
 namespace Bands.Validation
 {
     /// <summary>
-    /// An exception for payloads that fail validation
+    /// An exception for payloads that fail validation.
     /// </summary>
-    /// <typeparam name="TValidatable">Type of validatable payload</typeparam>
+    /// <typeparam name="TValidatable">Type of validatable payload.</typeparam>
     public class ValidationException<TValidatable> : Exception
     {
         public TValidatable ValidatablePayload { get; set; }

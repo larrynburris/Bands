@@ -7,7 +7,7 @@ namespace Bands.Time
     /// Helper class for wrapper some inner functionality with a stopwatch and extracting timespan 
     /// required to complete execution of inner functionality.
     /// </summary>
-    /// <typeparam name="TPayload">Type of timed payload</typeparam>
+    /// <typeparam name="TPayload">Type of timed payload.</typeparam>
     public class TimedBand<TPayload> : Band<TPayload> where TPayload : ITimedPayload
     {
         Stopwatch _stopwatch;

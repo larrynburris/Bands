@@ -8,7 +8,7 @@ namespace Bands.Time
     /// required to complete execution of inner functionality. In addition, this band will extract
     /// the average execution time per item in the collection.
     /// </summary>
-    /// <typeparam name="TTimedCollectionPayload">Type of timed collection payload</typeparam>
+    /// <typeparam name="TTimedCollectionPayload">Type of timed collection payload.</typeparam>
     public class TimedCollectionBand<TTimedCollectionPayload> : Band<TTimedCollectionPayload> 
         where TTimedCollectionPayload : ITimedCollectionPayload
     {
@@ -19,7 +19,7 @@ namespace Bands.Time
         public TimedCollectionBand(Action<TTimedCollectionPayload> payloadHandler) : base(payloadHandler) { }
 
         /// <summary>
-        /// Starts stopwatch prior to executing inner bands and/or wrapped funtionality
+        /// Starts stopwatch prior to executing inner bands and/or wrapped funtionality.
         /// </summary>
         /// <param name="payload">A payload of type <typeparamref name="ITimedCollectionPayload"/></param>
         public override void OnEnter(TTimedCollectionPayload payload)
@@ -30,7 +30,7 @@ namespace Bands.Time
 
         /// <summary>
         /// Stops stopwatch on completing execution of inner bands and/or wrapped funtionality
-        /// and calculates total timespan and average time span per collection item
+        /// and calculates total timespan and average time span per collection item.
         /// </summary>
         /// <param name="payload">A payload of type <typeparamref name="ITimedCollectionPayload"/></param>
         public override void OnExit(TTimedCollectionPayload payload)
@@ -42,10 +42,10 @@ namespace Bands.Time
         }
 
         /// <summary>
-        /// Calculates average milliseconds per collection item
+        /// Calculates average milliseconds per collection item.
         /// </summary>
-        /// <param name="milliseconds">Number of milliseconds for entire collection</param>
-        /// <param name="count">Number of items in collection</param>
+        /// <param name="milliseconds">Number of milliseconds for entire collection.</param>
+        /// <param name="count">Number of items in collection.</param>
         /// <returns></returns>
         private int GetAverageMsPerCollectionItem(long milliseconds, int count)
         {
