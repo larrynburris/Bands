@@ -6,7 +6,7 @@ namespace Bands.Validation
     /// Helper class for wrapping some inner functionality with validation logic to prevent
     /// execution of inner functionality using invalid data.
     /// </summary>
-    /// <typeparam name="TPayload">Type of validatable payload</typeparam>
+    /// <typeparam name="TPayload">Type of validatable payload.</typeparam>
     public class ValidationBand<TPayload> : Band<TPayload> where TPayload : IValidatablePayload
     {
         IValidator<TPayload> _validator;
@@ -24,10 +24,10 @@ namespace Bands.Validation
         }
 
         /// <summary>
-        /// Validate <paramref name="payload"/> prior to executing inner bands and/or wrapped functionality
+        /// Validate <paramref name="payload"/> prior to executing inner bands and/or wrapped functionality.
         /// </summary>
         /// <param name="payload">A validatable payload</param>
-        /// <exception cref="ValidationException{TValidatable}">Thrown if validation fails</exception>
+        /// <exception cref="ValidationException{TValidatable}">Thrown if validation fails.</exception>
         public override void OnEnter(TPayload payload)
         {
             if (!_validator.Validate(payload))

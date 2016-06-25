@@ -5,7 +5,7 @@ namespace Bands
     /// <summary>
     /// Helper class for wrapping a band of functionality around some inner functionality.
     /// </summary>
-    /// <typeparam name="T">The type of payload</typeparam>
+    /// <typeparam name="T">The type of payload.</typeparam>
     public abstract class Band<T> : IBand<T> where T : IPayload
     {
         protected IBand<T> InnerBand;
@@ -14,7 +14,7 @@ namespace Bands
         /// Initialize band around another band.
         /// </summary>
         /// <param name="innerBand">Any band for further wrapping some inner functionality.</param>
-        /// <exception cref="ArgumentException">ArgumentException is thrown if <paramref name="innerBand"/> is null</exception>
+        /// <exception cref="ArgumentException">ArgumentException is thrown if <paramref name="innerBand"/> is null.</exception>
         public Band(IBand<T> innerBand)
         {
             if (innerBand == null)
@@ -27,7 +27,7 @@ namespace Bands
         /// Initialize band around some functionality.
         /// </summary>
         /// <param name="payloadHandler">Any function accepting the specified generic constraint as a parameter.</param>
-        /// <exception cref="ArgumentException">ArgumentException is thrown if <paramref name="payloadHandler"/> is null</exception>
+        /// <exception cref="ArgumentException">ArgumentException is thrown if <paramref name="payloadHandler"/> is null.</exception>
         public Band(Action<T> payloadHandler)
         {
             if (payloadHandler == null)
@@ -41,7 +41,7 @@ namespace Bands
         public abstract void OnExit(T payload);
 
         /// <summary>
-        /// Run the next inner band and/or the wrapped functionality
+        /// Run the next inner band and/or the wrapped functionality.
         /// </summary>
         /// <param name="payload">A playload</param>
         public void Enter(T payload)
