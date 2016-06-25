@@ -13,7 +13,7 @@ namespace Bands.GettingStarted
             var incrementableBand = new IncrementableBand<CounterPayload>(innerConsoleBand);
             var outerConsoleBand = new ConsoleWriterBand<CounterPayload>(incrementableBand);
             outerConsoleBand.Enter(payload);
-            Console.WriteLine("Kinda badass, right?");
+            Console.WriteLine("Kinda awesome, right?");
             Console.Read();
         }
 
