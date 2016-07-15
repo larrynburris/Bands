@@ -6,7 +6,7 @@ Generic method wrapper implementation in .NET
 
 Bands allows you to add one or more layers of functionality around a method
 call. The benefit of this is isolating functional requirements from any
-boilerplate dependencies like diagnostics, persistaence, and validation.
+boilerplate dependencies like diagnostics, persistence, and validation.
 You can use built in bands or make your own!
 
 ### How can I learn more?
